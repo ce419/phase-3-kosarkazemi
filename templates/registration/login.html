@@ -7,11 +7,11 @@
     {% endif %}
     <form method="post" action=".">{% csrf_token %}
         <table border="0">
-            <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
-            <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
+             {{ form.as_table }}
         </table>
+        <br>
         <input type="submit" value="Login" />
         <input type="hidden" name="next" value="/home" />
     </form>
-    <a href="/register">Register</a>
+{#    <a href="/register">Register</a>#}
 {% endblock %}

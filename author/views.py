@@ -1,27 +1,27 @@
-import binascii
+import string , random
 from django.shortcuts import render_to_response, render, redirect
 from django.template.loader import get_template
 from django.template import Context, Template, RequestContext
-from .models import User, Blog
 from django.http import Http404, HttpResponse , HttpResponseRedirect ,JsonResponse
 from django.contrib.auth import logout, authenticate, login
 from .forms import *
 from django.views.decorators.csrf import csrf_protect
-
+from .models import Blog , User
 
 
 
 
 def main_page(request):
-    template = get_template('main_page.html')
-    variables = Context({ 'user': request.user })
-    output = template.render(variables)
-    return HttpResponse(output)
+    return render(request, 'main_page.html', { 'user': User, })
 
 
 def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+
+def token_generator(size=20 , chars= (string.ascii_uppercase + string.digits)):
+   return ''.join(random.choice(chars) for _ in range(size))
 
 #1
 @csrf_protect
@@ -34,7 +34,9 @@ def register_page(request):
                                             first_name=form.cleaned_data['first_name'],
                                             last_name=form.cleaned_data['last_name'],
                                             password=form.cleaned_data['password'],
-                                            email=form.cleaned_data['email'])
+                                            email=form.cleaned_data['email'],)
+            default_blog = Blog.objects.create(user_owner=registered_user)
+            registered_user.blog_id = default_blog.id
             registered_user.save()
             # redirect('login_page', request) TODO
             return JsonResponse(data={'status': 0 }, safe=False )
@@ -46,7 +48,6 @@ def register_page(request):
 
     return render(request, 'registration/register.html', {'form': form,})
 
-# binascii.hexlify(User)
 
 #2
 def login_page(request):
@@ -59,7 +60,7 @@ def login_page(request):
                                 password=password)
 
             login(request, user)
-            token = 1  #token_generator.make_token(user) #TODO
+            token = token_generator()
             loged_user = User.objects.get(std_num=std_num)
             loged_user.token = token
             loged_user.save()
@@ -70,3 +71,15 @@ def login_page(request):
         form = LoginForm()
 
     return render(request, 'registration/login.html', {'form': form, })
+
+
+#8
+def blog_id_get(request):
+    token=request.META.__getitem__('HTTP_X_TOKEN')
+    if request.method == 'GET':
+        loged_user = User.objects.get(token=token)
+        bloo_id=loged_user.blog_id
+        return JsonResponse(data={'status': 0,'blog_id': bloo_id}, safe=False)
+    else:
+        return JsonResponse(data={'status': -1}, safe=False)
+
