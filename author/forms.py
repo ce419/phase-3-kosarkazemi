@@ -7,10 +7,11 @@ from .models import User , Blog
 class RegisterForm(forms.Form):
 
 
-    username = forms.CharField(label='Username', max_length=30)
+    std_num = forms.IntegerField(label='Student Number', max_length=10)
+    first_name = forms.CharField(label='First Name', max_length=30)
+    last_name = forms.CharField(label='First Name', max_length=30)
     email = forms.EmailField(label='Email')
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput())
-    password2 = forms.CharField(label='Password (Again)', widget=forms.PasswordInput())
+    password = forms.CharField(label='Password', widget=forms.PasswordInput())
 
     def clean_username(self):
         username = self.cleaned_data['username']
