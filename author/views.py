@@ -1,10 +1,13 @@
-from django.shortcuts import render_to_response
+import binascii
+from django.shortcuts import render_to_response, render, redirect
 from django.template.loader import get_template
 from django.template import Context, Template, RequestContext
 from .models import User, Blog
 from django.http import Http404, HttpResponse , HttpResponseRedirect ,JsonResponse
 from django.contrib.auth import logout, authenticate, login
 from .forms import *
+from django.views.decorators.csrf import csrf_protect
+
 
 
 
@@ -21,6 +24,7 @@ def logout_page(request):
     return HttpResponseRedirect('/')
 
 #1
+@csrf_protect
 def register_page(request):
 
     if request.method == 'POST':
@@ -32,29 +36,37 @@ def register_page(request):
                                             password=form.cleaned_data['password'],
                                             email=form.cleaned_data['email'])
             registered_user.save()
-            return JsonResponse(data={'status': 0 }, safe=False) #TODO ?? redirect('post_detail', pk=post.pk)
+            # redirect('login_page', request) TODO
+            return JsonResponse(data={'status': 0 }, safe=False )
+        else:
+            return JsonResponse(data={'status': -1 } , safe=False)
+
     else:
         form = RegisterForm()
-        # variables = RequestContext(request, {'form': form})
-    return JsonResponse(data={'status': -1 }, safe=False) #render_to_response('registration/register.html',variables)
 
+    return render(request, 'registration/register.html', {'form': form,})
+
+# binascii.hexlify(User)
 
 #2
 def login_page(request):
     if request.method == 'POST':
         print(request.POST)
-        form = LoginForm(data=request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
-            username, password = form.cleaned_data.get('username'), form.cleaned_data.get('password')
-            user = authenticate(username=username,
+            std_num, password = form.cleaned_data.get('std_num'), form.cleaned_data.get('password')
+            user = authenticate(std_num=std_num,
                                 password=password)
 
             login(request, user)
-            token = 1#token_generator.make_token(user) #TODO
-            loged_user = User.objects.get(username=username)
+            token = 1  #token_generator.make_token(user) #TODO
+            loged_user = User.objects.get(std_num=std_num)
             loged_user.token = token
             loged_user.save()
-            return JsonResponse(data={'status': 0,
-                                      'token': token}, safe=False)
+            return JsonResponse(data={'status': 0,'token': token}, safe=False)
+        else:
+            return JsonResponse(data={'status': -1 } , safe=False)
     else:
-        return JsonResponse(data={'status': -1 } , safe=False)
+        form = LoginForm()
+
+    return render(request, 'registration/login.html', {'form': form, })
