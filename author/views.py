@@ -1,12 +1,14 @@
+from django.shortcuts import render_to_response
 from django.template.loader import get_template
 # from rest_framework.views import  APIView
 # from rest_framework.response import  Response
 # from rest_framework import  status
 from django.views import generic
-from django.template import Context, Template
+from django.template import Context, Template, RequestContext
 from .models import User, Blog
 from django.http import Http404, HttpResponse , HttpResponseRedirect ,JsonResponse
-from django.contrib.auth import logout
+from django.contrib.auth import logout, authenticate, login
+from .forms import *
 
 
 
@@ -21,44 +23,38 @@ def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-
 #1
-class register (generic.FormView):
-    model = User
-    def post(self, request):
+def register_page(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = User.objects.create_user(std_num=form.cleaned_data['std_num'],
+                                            first_name=form.cleaned_data['first_name'],
+                                            last_name=form.cleaned_data['last_name'],
+                                            password=form.cleaned_data['password'],
+                                            email=form.cleaned_data['email'])
+            return HttpResponseRedirect('/')
+    else:
+        form = RegisterForm()
+        variables = RequestContext(request, {'form': form})
+        return JsonResponse(data={'status': 0 }, safe=False)
 
-        # serializer = UserSerializer(data = request.data)
-        # if serializer.is_valid():
-        #     serializer.save()
-        #     return Response(serializer.data, status=111)
-        # return Response(serializer.errors, status=100)
-        newUser = request.data
-        # redirect_field_name = 'redirect_to'
 
+def login_page(request):
+    if request.method == 'POST':
+        print(request.POST)
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            username, password = form.cleaned_data.get('username'), form.cleaned_data.get('password')
+            user = authenticate(username=username,
+                                password=password)
 
-
-# #2
-# class login (APIView):
-#
-#
-#
-#     # if request.method == 'POST':
-#     #     # create a form instance and populate it with data from the request:
-#     #     print(request.POST)
-#     #     form = LoginForm(data=request.POST)
-#     #     # check whether it's valid:
-#     #     if form.is_valid():
-#     #         username, password = form.cleaned_data.get('username'), form.cleaned_data.get('password')
-#     #         user = authenticate(username=username, password=password)
-#     #         login(request, user)
-#     #         token = token_generator.make_token(user)
-#     #         bu = BlogUser.objects.get(username=username)
-#     #         bu.token = token
-#     #         bu.save()
-#     #         return JsonResponse(data={'status': 0 , 'token': token}, safe=False)
-#     #     else:
-#     #         return JsonResponse(data={'status': -1 , message': form.errors["__all__"]}, safe=False)
-#
-#     def post (self):
-#         pass
-#
+            login(request, user)
+            token = token_generator.make_token(user)
+            logedUser = User.objects.get(username=username)
+            logedUser.token = token
+            logedUser.save()
+            return JsonResponse(data={'status': 0,
+                                      'token': token}, safe=False)
+        else:
+            return JsonResponse(data={'status': -1 } , safe=False)
