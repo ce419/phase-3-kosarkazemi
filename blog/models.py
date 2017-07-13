@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from author import models as author_models
 
+#request.META['X-Token']
 
 class Post(models.Model):
     id = models.AutoField(primary_key=True)

@@ -10,7 +10,8 @@ urlpatterns = (
     url(r'^admin/', admin.site.urls),
     url(r'^$', main_page),
     url(r'^register/', register_page),
-    url(r'^login/$', login),
+    # url(r'^register/', register_page_form),
+    url(r'^login/$', login_page),
     url(r'^logout/$', logout_page),
 )
 
