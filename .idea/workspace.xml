@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="befb4920-9e46-46ce-a6e9-303661e763cb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/author/migrations/0002_user_blog_id.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/author/serializers.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/P3/urls.py" afterPath="$PROJECT_DIR$/P3/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/author/admin.py" afterPath="$PROJECT_DIR$/author/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/author/forms.py" afterPath="$PROJECT_DIR$/author/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/author/models.py" afterPath="$PROJECT_DIR$/author/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/author/views.py" afterPath="$PROJECT_DIR$/author/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/main_page.html" afterPath="$PROJECT_DIR$/templates/main_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/login.html" afterPath="$PROJECT_DIR$/templates/registration/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/registration/register.html" afterPath="$PROJECT_DIR$/templates/registration/register.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -570,7 +559,14 @@
       <option name="project" value="LOCAL" />
       <updated>1499971226066</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="7">
+      <created>1499981436726</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1499981436726</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
