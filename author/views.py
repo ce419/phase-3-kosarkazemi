@@ -1,14 +1,11 @@
 import string , random
-from django.shortcuts import render_to_response, render, redirect
-from django.template.loader import get_template
-from django.template import Context, Template, RequestContext
-from django.http import Http404, HttpResponse , HttpResponseRedirect ,JsonResponse
+from django.shortcuts import  render
+from django.http import HttpResponseRedirect ,JsonResponse
 from django.contrib.auth import logout, authenticate, login
 from .forms import *
-from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from .models import Blog , BlogUser
-
 
 
 
@@ -69,6 +66,7 @@ def register_page(request):
 
 
 #2
+
 # def login_page(request):
 #     if request.method == 'POST':
 #         print(request.POST)
@@ -93,15 +91,6 @@ def register_page(request):
 
 @csrf_exempt
 def login_page(request):
-    # user = authenticate(username=request.POST['username'] , password=request.POST['password'])
-    # if user is None:
-    #     print('ridim')
-    # else:
-    #     print('naridim')
-    # user = authenticate(username="man" , password='12345678')
-    # i= request.POST['password']
-    # user = User.objects.get(password=i)
-    # return JsonResponse(data={'status': str(user) }, safe=False)
     if request.method == 'POST':
         user = authenticate(username=request.POST['username'], password=request.POST['password'])
         if user is not None:
@@ -112,7 +101,7 @@ def login_page(request):
             logged_in_user.save()
             return JsonResponse(data={'status': 0,'token': token}, safe=False)
         else:
-            return JsonResponse(data={'status': 2}, safe=False)
+            return JsonResponse(data={'status': -1}, safe=False)
     else:
         return JsonResponse(data={'status': -1}, safe=False)
 

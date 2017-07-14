@@ -7,7 +7,6 @@ class BlogUser(models.Model):
     blog_id = models.IntegerField(default=0)
     token = models.CharField(max_length=20, blank=True, null=True, default=None)
 
-    ###  TODO
 
 
 

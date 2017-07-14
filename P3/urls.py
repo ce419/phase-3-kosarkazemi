@@ -2,9 +2,8 @@ from django.conf.urls import url
 from django.contrib import admin
 from author.views import *
 from blog.views import *
-from django.contrib.auth.views import login
 
-
+##TODO sending serverside files
 
 urlpatterns = (
     #author
@@ -18,7 +17,8 @@ urlpatterns = (
     #blog
     url(r'^blog/(\d)/posts/$', get_posts),
     url(r'^blog/(\d)/post/$', post),
-
+    url(r'^blog/(\d)/comments/$', get_comments),
+    url(r'^blog/(\d)/comment/$', comment),
 
 )
 
