@@ -1,26 +1,25 @@
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User
 import re
-from .models import User , Blog
-
 
 class RegisterForm(forms.Form):
 
-    std_num = forms.IntegerField(label='Student Number')
+    username = forms.CharField(label='UserName')
     first_name = forms.CharField(label='First Name', max_length=30)
     last_name = forms.CharField(label='Last Name', max_length=30)
     email = forms.EmailField(label='Email')
     password = forms.CharField(label='Password', widget=forms.PasswordInput())
 
-    def clean_std_num(self):
-        std_num = self.cleaned_data['std_num']
-        if not re.search(r'^\d+$', str(std_num)):
-            raise forms.ValidationError('Your Student Number is not valid.')
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if not re.search(r'^\w+$', str(username)):
+            raise forms.ValidationError('Your UserName is not valid.')
         try:
-            User.objects.get(std_num=std_num)
+            User.objects.get(username=username)
         except ObjectDoesNotExist:
-            return std_num
-        raise forms.ValidationError('This Student already has an account!')
+            return username
+        raise forms.ValidationError('This UserName is already taken!')
 
     def clean_password(self):
         password = self.cleaned_data['password']
@@ -41,6 +40,6 @@ class RegisterForm(forms.Form):
 
 
 class LoginForm(forms.Form):
-    std_num = forms.IntegerField(label='Student Number')
+    username = forms.CharField(label='UserName')
     password = forms.CharField(label='Password', widget=forms.PasswordInput())
 

@@ -12,10 +12,13 @@ urlpatterns = (
     url(r'^$', main_page),
     url(r'^auth/register/', register_page),
     url(r'^auth/login/$', login_page),
-    url(r'^lauth/ogout/$', logout_page),
+    url(r'^auth/logout/$', logout_page),
     url(r'^auth/blog_id/$', blog_id_get),
 
     #blog
+    url(r'^blog/(\d)/posts/$', get_posts),
+    url(r'^blog/(\d)/post/$', post),
+
 
 )
 
