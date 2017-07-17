@@ -108,7 +108,7 @@ def login_page(request):
 
 #8
 def blog_id_get(request):
-    token=request.META.__getitem__('HTTP_X_TOKEN')
+    token=request.META.__getitem__('HTTP_MYTOKEN') ##'HTTP_X_TOKEN']
     if request.method == 'GET':
         logged_in_user = BlogUser.objects.get(token=token)
         blog_id=logged_in_user.blog_id
