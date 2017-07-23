@@ -27,7 +27,7 @@ SECRET_KEY = 'uz28aihndx63idf4ve=4v7hibr#)gy2xf+9q_ew-umjd^8)3y-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ancient-brushlands-78335.herokuapp.com']
 
 
 # Application definition
@@ -90,6 +90,9 @@ DATABASES = {
     }
 }
 
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -128,5 +131,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 #############################
