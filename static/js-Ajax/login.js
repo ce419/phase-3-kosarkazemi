@@ -5,7 +5,7 @@ $(document).ready(function() {
     $('#login').click(function() {
         var user = $('#username').val();
         var pass = $('#pass').val();
-        $.post('/auth/login/', {'username': user, 'password': pass}, function (data) {
+        $.post('/login/', {'username': user, 'password': pass}, function (data) {
             if(data.status === -1) {
                 // error
                 $('#body').find('.row .column .ui.error.message').parent().parent().remove();
@@ -32,7 +32,7 @@ $(document).ready(function() {
                 // document.location = 'google.com';
 
                 $.get({
-                url: '/auth/blog_id/',
+                url: '/blog_id/',
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('myToken', Cookies.get('myToken'));
                 },

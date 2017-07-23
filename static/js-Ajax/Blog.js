@@ -15,7 +15,7 @@ $(document).ready(function() {
                 },
                 success: function (data) {
                     data.posts.forEach(function (post) {
-                        var template = '<li class="blog-card">\n<div class="cd-content">\n<div class="cd-title">#TITLE#</div>\n<div class="cd-text">\n<p>\n#SUMMARY#\n</p>\n</div>\n<div class="cd-date blog-date">#DATE#</div>\n<div class="cd-more">\n<a href="Blog-more.html?id=#ID#">\nmore\n</a>\n</div>\n</div>\n</li>';
+                        var template = '<li class="blog-card">\n<div class="cd-content">\n<div class="cd-title">#TITLE#</div>\n<div class="cd-text">\n<p>\n#SUMMARY#\n</p>\n</div>\n<div class="cd-date blog-date">#DATE#</div>\n<div class="cd-more">\n<a href="' + blog_id + '/Blog-more.html?id=#ID#">\nmore\n</a>\n</div>\n</div>\n</li>';
                         var text = template.replace('#ID#', post.id).replace('#TITLE#', post.title).replace('#SUMMARY#', post.sum).replace('#DATE#', getPersianDateString(post.datetime));
                         $('#blog').append($.parseHTML(text));
                     });
@@ -32,7 +32,7 @@ $(document).ready(function() {
                 },
                 success: function (data) {
                     data.posts.forEach(function(post) {
-                       var template = '<li class="blog-card">\n<div class="cd-content">\n<div class="cd-title">#TITLE#</div>\n<div class="cd-text">\n<p>\n#SUMMARY#\n</p>\n</div>\n<div class="cd-date blog-date">#DATE#</div>\n<div class="cd-more">\n<a href="Blog-more.html?id=#ID#">\nmore\n</a>\n</div>\n</div>\n</li>';
+                       var template = '<li class="blog-card">\n<div class="cd-content">\n<div class="cd-title">#TITLE#</div>\n<div class="cd-text">\n<p>\n#SUMMARY#\n</p>\n</div>\n<div class="cd-date blog-date">#DATE#</div>\n<div class="cd-more">\n<a href="' + blog_id + 'Blog-more.html?id=#ID#">\nmore\n</a>\n</div>\n</div>\n</li>';
                        var text = template.replace('#ID#', post.id).replace('#TITLE#', post.title).replace('#SUMMARY#', post.sum).replace('#DATE#', getPersianDateString(post.datetime));
                        $('#blog').append($.parseHTML(text));
                     });
