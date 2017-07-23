@@ -28,7 +28,7 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ['id', 'owner']
+    list_display = ['id', 'owner', 'title']
 
     def get_queryset(self, request):
         qs = super(BlogAdmin, self).get_queryset(request)

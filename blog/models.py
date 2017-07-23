@@ -14,7 +14,7 @@ class Post(models.Model):
         ret = {
             'id': self.id,
             'title': self.title,
-            'summery': self.sum,
+            'summary': self.sum,
             'datetime': self.datetime,
             'text': self.text
         }

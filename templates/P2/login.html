@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css-sass/semantic.min.css' %} " />
+    <script type="text/javascript" src="{% static 'js-Ajax/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js-Ajax/js.cookie.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js-Ajax/login.js' %}"></script>
+</head>
+<body>
+<div class="row">
+    <div class="column">
+        <div class="ui hidden divider"></div>
+    </div>
+</div>
+<form class="ui form" method="get" action="" id="regForm">
+    <div class="ui centered three column grid">
+        <div class="three column centered row">
+            <div class="column">
+                <div class="ui centered grid container segment" id="body">
+                    <div class="left aligned row">
+                        <div class="ui column">
+                            <div class="field">
+                                <label for="username">Username:</label>
+                                <input type="text" placeholder="Username" id="username" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left aligned row">
+                        <div class="ui column">
+                            <div class="field">
+                                <label for="pass">Password:</label>
+                                <input type="password" placeholder="Password" id="pass" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <button class="ui violet button" type="button" value="login" id="login">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            Not registered yet? register <a href="{% url 'register' %}">here</a>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

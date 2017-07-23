@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Write a post</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css-sass/semantic.min.css' %}" />
+    <script type="text/javascript" src="{% static 'js-Ajax/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js-Ajax/js.cookie.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js-Ajax/writePost.js' %}"></script>
+</head>
+<body>
+<div class="row">
+    <div class="column">
+        <div class="ui hidden divider"></div>
+    </div>
+</div>
+<form class="ui form" method="get" action="" id="regForm">
+    <div class="ui centered three column grid">
+        <div class="two column centered row">
+            <div class="column">
+                <div class="ui centered grid container segment" id="body">
+                    <div class="left aligned row">
+                        <div class="ui column">
+                            <h2 class="ui dividing header">Write a post</h2>
+                        </div>
+                    </div>
+                    <div class="left aligned row">
+                        <div class="ui column">
+                            <div class="field">
+                                <label for="title">Title:</label>
+                                <input type="text" placeholder="Title" id="title" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left aligned row">
+                        <div class="ui column">
+                            <div class="field">
+                                <label for="sum">Summary:</label>
+                                <textarea placeholder="Summary" id="sum" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left aligned row">
+                        <div class="ui column">
+                            <div class="field">
+                                <label for="text">Text:</label>
+                                <textarea placeholder="Text" id="text" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="two column row">
+                        <div class="left aligned column">
+                            <button class="ui left labeled icon blue button" type="button" value="home" id="home">
+                                <i class="left home icon"></i>
+                                Home
+                            </button>
+                        </div>
+                        <div class="right aligned column">
+                            <button class="ui violet button" type="button" value="post" id="post">
+                                Post !
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

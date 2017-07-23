@@ -17,3 +17,12 @@ SQLAlchemy==1.0.14
 uWSGI==2.0.13.1
 virtualenv==15.1.0
 whitenoise==3.3.0
+celery==3.0.18
+django-celery==3.0.17
+
+
+
+
+
+
+

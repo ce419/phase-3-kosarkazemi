@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css-sass/semantic.min.css' %}" />
+    <script type="text/javascript" src="{% static 'js-Ajax/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js-Ajax/js.cookie.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js-Ajax/persian-date-0.1.8.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js-Ajax/main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js-Ajax/comments.js' %}"></script>
+</head>
+<body>
+<div class="row">
+    <div class="column">
+        <div class="ui hidden divider"></div>
+    </div>
+</div>
+<form class="ui form" method="get" action="" id="regForm">
+    <div class="ui centered three column grid">
+        <div class="one column centered row">
+            <div class="column">
+                <div class="ui centered grid container segment" id="body">
+                    <div class="two column row">
+                        <div class="left aligned column">
+                            <button class="ui left labeled icon blue button" type="button" value="home" id="home">
+                                <i class="left home icon"></i>
+                                Home
+                            </button>
+                        </div>
+                        <div class="right aligned column">
+                            <button class="ui blue button" type="button" value="back" id="back">
+                                Back to post
+                            </button>
+                        </div>
+                    </div>
+                    <div class="left aligned row">
+                        <div class="column">
+                            <h2 class="ui dividing header">Your Comment:</h2>
+                        </div>
+                    </div>
+                    <div class="left aligned row">
+                        <div class="ui column">
+                            <div class="field">
+                                <textarea placeholder="Your Comment" id="cmText" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right aligned row">
+                        <div class="column">
+                            <div class="right aligned column">
+                                <button class="ui violet button" type="button" value="send" id="send">
+                                    Send
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left aligned row">
+                        <div class="column">
+                            <h2 class="ui dividing header">
+                                Other Comments:
+                            </h2>
+                            <div class="ui comments" id="comments"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

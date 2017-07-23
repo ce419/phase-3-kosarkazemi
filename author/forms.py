@@ -37,9 +37,11 @@ class RegisterForm(forms.Form):
 
 
 
-
-
 class LoginForm(forms.Form):
     username = forms.CharField(label='UserName')
     password = forms.CharField(label='Password', widget=forms.PasswordInput())
+
+
+
+
 

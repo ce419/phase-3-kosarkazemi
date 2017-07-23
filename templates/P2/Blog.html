@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css-sass/Blog.css' %}">
+    <script type="text/javascript" src="{% static 'js-Ajax/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js-Ajax/js.cookie.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'js-Ajax/persian-date-0.1.8.min.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'js-Ajax/main.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'js-Ajax/Blog.js' %}"></script>
+</head>
+<body>
+<div id="wrapper">
+    <div id="header">
+        <h1>Cartoon Blog!</h1>
+        <div class="postLink">
+{#            {% with "blog/"|add:blog_id|add:"/writePost/" as adr %}#}
+            <a class="button" href='writePost' src='writePost.html'>Write a new post !</a>
+{#            {% endwith %}#}
+        </div>
+    </div>
+    <ul id="blog">
+    </ul>
+    <div id="footer">
+        <h5>Made by Kosar Kazemi © 2017</h5>
+    </div>
+</div>
+</body>
+</html>
