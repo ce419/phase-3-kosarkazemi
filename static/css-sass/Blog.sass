@@ -1,0 +1,206 @@
+//*********   imports    *********
+@mixin vendor-prefixes($property, $value)
+  -webkit-#{$property}: $value
+  -moz-#{$property}: $value
+  -ms-#{$property}: $value
+  -o-#{$property}: $value
+
+
+
+//@include font-face(Assistant, "//fonts.googleapis.com/css?family=Assistant")
+$font:    Helvetica, sans-serif
+
+//*********   color variables    *********
+
+
+$primary-color: #333
+$header-color: #c0c0c0
+$bg-color: #333333
+$TheRed: #dd352e
+$TheOrangeRed: #FF4500
+$TheBlue: #154879
+$TheWhite: #ccc
+//$card-title-color: #4682B4
+
+
+//*********   page elements    *********
+
+*
+  margin: 0
+  padding: 0
+  text-align: center
+  //position: relative
+
+
+html
+  overflow: scroll
+
+
+body
+  background-color: $bg-color
+  font-family: $font
+  color: $primary-color
+
+
+#wrapper
+  min-height: 100%
+  min-width: 100%
+  position: absolute
+  top: 0
+  left: 0
+
+
+#header
+  z-index: 2
+  position: fixed
+  background-image: url("../imagesfiles/Header.png")
+  @include vendor-prefixes(background-size , cover)
+  width: 100%
+  height: 15%
+  border-bottom: 0.5em solid $TheBlue
+
+#header h1
+  color: $TheRed
+  text-align: left
+  font-size: 3em
+  padding-top: 0.8em
+  padding-left: 2em
+
+
+#footer::before
+  clear: both
+
+#footer
+  //position: absolute
+  width: 100%
+  height: 2em
+  background-color: $TheBlue
+  bottom: 0
+  margin-top: 3em
+
+
+#footer h5
+  color: $TheWhite
+  text-align: left
+  font-size: 1em
+  padding-left: 0.5em
+  padding-top: 0.5em
+
+.button
+  position : relative
+  color : #fff
+  border-radius: 5px
+  float: left
+  margin-left: 5em
+  margin-top: 5em
+  margin-bottom: 5em
+  padding : 8px 10px
+  background-color : #0092ba
+  display : inline-block
+  min-width : 100px
+  text-align : center
+  white-space : nowrap
+  text-decoration : none
+
+
+#blog
+  @include vendor-prefixes(column-width , 20em)
+  column-width: 20em
+  width: 100%
+  max-width: 90%
+  margin: 5% 0 0 5%
+  margin-top: 15%
+
+
+.blog-card
+  display: inline-block
+  width: 100%
+
+  @include vendor-prefixes(column-break-inside , avoid)
+  //@include vendor-prefixes(break-inside , avoid)
+  transition: opacity .4s ease-in-out
+
+
+//*********   card styling    *********
+
+.cd-content
+
+  @include vendor-prefixes(column-break-inside , avoid)
+  @include vendor-prefixes(break-inside , avoid)
+
+  position: relative
+  height: 90%
+  margin-top: 10%
+  border-radius: 0.5em
+  border: 0.4em solid $TheOrangeRed
+  background: $TheWhite
+  //min-height: 30em
+
+.cd-img img
+  width: 100%
+  border-radius: 0.5em 0.5em 0 0
+
+.cd-img
+  min-width: 100%
+  height: 30%
+  min-height: 30%
+  padding-top: -19.2%
+
+
+.cd-title
+  color: $TheOrangeRed
+  font-size: large
+  font-weight: bold
+  text-align: left
+  margin-top: 1em
+  margin-bottom: 2em
+  padding-left: 1em
+
+.cd-text
+
+  padding-left: 1em
+  padding-right: 0.5em
+  padding-top: 0.5em
+  padding-bottom: 0.5em
+  margin-right: 0.3em
+  margin-left: 0.3em
+  margin-bottom: 0.5em
+  border: 0.1em solid grey
+
+
+.cd-icon
+  float: left
+  border: 0.5em solid $TheBlue
+  background-image: url("../imagesfiles/profile-picture2.jpg")
+  @include vendor-prefixes(background-size , 100% 100%)
+  background-size: 100% 100%
+  width: 5em
+  height: 5em
+  border-radius: 50%
+  margin-left: 0.5em
+
+.cd-author
+  margin-top: 10%
+  margin-left: 30%
+
+.cd-author p
+  color: $TheBlue
+  text-align: left
+  font-size: 1.5em
+
+
+.blog-date
+  width: 40%
+  margin-left: 30%
+
+.cd-more
+  margin-left: 75%
+  margin-bottom: 1em
+  color: #2f98d6
+
+.post-id
+  display: none
+
+a
+  color: $TheOrangeRed
+  cursor: pointer

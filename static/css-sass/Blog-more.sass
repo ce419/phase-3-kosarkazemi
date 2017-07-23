@@ -1,0 +1,248 @@
+//*********   imports    *********
+@mixin vendor-prefixes($property, $value)
+  -webkit-#{$property}: $value
+  -moz-#{$property}: $value
+  -ms-#{$property}: $value
+  -o-#{$property}: $value
+
+$phone: "(min-width: 719px) and (max-width: 1079px)"
+$tablet: "(min-width: 1079px) and (max-width: 1919px)"
+$desktop: "(min-width: 1920px)"
+
+
+//@include font-face(Assistant, "//fonts.googleapis.com/css?family=Assistant")
+$font:    Helvetica, sans-serif
+
+//*********   color variables    *********
+
+
+$primary-color: #333
+$header-color: #c0c0c0
+$bg-color: #333333
+$TheRed: #dd352e
+$TheOrangeRed: #FF4500
+$TheBlue: #154879
+$TheWhite: #ccc
+//$card-title-color: #4682B4
+
+
+//*********   page elements    *********
+
+*
+  margin: 0
+  padding: 0
+  text-align: center
+//position: relative
+
+
+html
+  overflow: scroll
+
+
+body
+  background-color: $bg-color
+  font-family: $font
+  color: $primary-color
+
+
+#wrapper
+  min-height: 100%
+  min-width: 100%
+  position: absolute
+  top: 0
+  left: 0
+
+
+#header
+  z-index: 2
+  position: fixed
+  background-image: url("../imagesfiles/Header.png")
+  @include vendor-prefixes(background-size , cover)
+  width: 100%
+  height: 15%
+  border-bottom: 0.5em solid $TheBlue
+
+#header h1
+  color: $TheRed
+  text-align: left
+  font-size: 3em
+  padding-top: 0.8em
+  padding-left: 2em
+
+
+#footer::before
+  clear: both
+
+#footer
+  position: absolute
+  width: 100%
+  height: 2em
+  background-color: $TheBlue
+  bottom: 0
+
+
+#footer h5
+  color: $TheWhite
+  text-align: left
+  font-size: 1em
+  padding-left: 0.5em
+  padding-top: 0.5em
+
+
+//*********   page elements    *********
+
+#blog-more
+  margin-left: 5%
+  margin-right: 5%
+  margin-top: 9%
+  min-width: 90%
+  min-height: 100%
+  background: $TheWhite
+  float: left
+
+
+.comment
+  position : relative
+  color : #fff
+  border-radius: 5px
+  float: right
+  margin-right: 5em
+  margin-top: 5em
+  margin-bottom: 5em
+  padding : 8px 10px
+  background-color : $TheOrangeRed
+  display : inline-block
+  min-width : 100px
+  text-align : center
+  white-space : nowrap
+  text-decoration : none
+
+
+.back
+  position : relative
+  color : #fff
+  border-radius: 5px
+  float: left
+  margin-left: 5em
+  margin-top: 5em
+  margin-bottom: 5em
+  padding : 8px 10px
+  background-color : $TheBlue
+  display : inline-block
+  min-width : 100px
+  text-align : center
+  white-space : nowrap
+  text-decoration : none
+
+
+.more-title
+  color: $TheBlue
+  background-color: #2f98d6
+  font-size: 3.5em
+  font-weight: bold
+  text-align: left
+  margin-bottom: 1em
+  padding-left: 1em
+  padding-bottom: 1em
+
+
+
+@media #{$desktop}
+  .more-title
+    padding-top: 1em
+
+@media #{$tablet}
+  .more-title
+    padding-top: 2em
+
+@media  #{$phone}
+  .more-title
+    padding-top: 3em
+
+
+
+.more-icon
+  float: left
+  border: 0.5em solid $TheBlue
+  background-image: url("../imagesfiles/profile-picture2.jpg")
+  background-size: 100% 100%
+  width: 5em
+  height: 5em
+  border-radius: 50%
+  margin-left: 1em
+  margin-top: -2.3em
+
+.more-author
+  margin-top: -1em
+  float: left
+  margin-left: 1em
+  width: 20%
+
+.more-author p
+  color: $TheBlue
+  text-align: left
+  font-size: 2em
+
+.more-img img
+  width: 25%
+  border-radius: 0.5em 0.5em 0.5em 0.5em
+  float: right
+  margin-right: 3em
+
+.more-img
+  min-width: 100%
+  height: 30%
+  min-height: 30%
+  padding-top: -19.2%
+
+
+.more-text
+  border: 0.2em solid dimgray
+  border-radius: 0.5em 0.5em 0.5em 0.5em
+  margin-top: 10%
+  margin-bottom: 5%
+  margin-right: 5%
+  margin-left: 5%
+  width: 60%
+  height: 80%
+  min-height: 30em
+
+.more-text p
+  text-align: left
+  padding-right: 0.5em
+  padding-left: 2em
+  padding-top: 2em
+  padding-bottom: 1em
+
+
+.more-date
+  width: 25%
+  float: right
+  //margin-top: -45%
+  margin-right: 3%
+  text-align: center
+  font-size: 2em
+  color: $primary-color
+  border: 0.2em solid $TheOrangeRed
+  border-radius: 0.5em 0.5em 0.5em 0.5em
+
+
+@media #{$desktop}
+  .more-date
+    margin-top: 6em
+
+@media #{$tablet}
+  .more-date
+    margin-top: -45%
+
+@media  #{$phone}
+  .more-date
+    margin-top: -45%
+
+//@media only screen and (min-width: 1070px)
+//  .more-date
+//    margin-top: 10em
+//
+//@media only screen and (min-width: 710px)
+//  .more-date
+//    margin-top: -45%
