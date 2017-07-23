@@ -5,7 +5,7 @@ $(document).ready(function() {
     $('#login').click(function() {
         var user = $('#username').val();
         var pass = $('#pass').val();
-        $.post('/login/', {'username': user, 'password': pass}, function (data) {
+        $.post('auth/login/', {'username': user, 'password': pass}, function (data) {
             if(data.status === -1) {
                 // error
                 $('#body').find('.row .column .ui.error.message').parent().parent().remove();
