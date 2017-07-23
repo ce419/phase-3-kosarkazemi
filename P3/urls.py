@@ -15,19 +15,19 @@ urlpatterns = (
     url(r'^auth/blog_id/$', blog_id_get , name='blog_id'),
 
     #blog
-    url(r'^blog/(\d)/posts/$', get_posts),
-    url(r'^blog/(\d)/post/$', post),
-    url(r'^blog/(\d)/comments/$', get_comments),
-    url(r'^blog/(\d)/comment/$', comment),
+    url(r'^blog/(\d+)/posts/$', get_posts),
+    url(r'^blog/(\d+)/post/$', post),
+    url(r'^blog/(\d+)/comments/$', get_comments),
+    url(r'^blog/(\d+)/comment/$', comment),
 
     #search
     url(r'^search/blog/$',search),
 
     #static files
-    url(r'^blog/(\d)/$', blog_by_id , name='blog_by_id'),
+    url(r'^blog/(\d+)/$', blog_by_id , name='blog_by_id'),
     url(r'^login/$', login_page_static , name='login'),
-    url(r'^blog/(\d)/Blog-more(.*)$', blog_more , name='blog_more'),
-    url(r'^blog/(\d)/writePost/$', write_post , name='writePost')
+    url(r'^blog/(\d+)/Blog-more(.*)$', blog_more , name='blog_more'),
+    url(r'^blog/(\d+)/writePost/$', write_post , name='writePost')
     # url(r'^comment$', write_comment , name='write_comment'),
 
 )

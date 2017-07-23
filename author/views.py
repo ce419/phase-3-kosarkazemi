@@ -50,9 +50,8 @@ def register_page(request):
             registered_user.save()
 
             default_blog.owner = registered_user
-            default_blog.title = str(str(registered_user['first_name']+' '+str(registered_user['first_name'])+' \'s first blog!'))
+            # default_blog.title = str(str(registered_user['first_name']+' '+str(registered_user['first_name'])+' \'s first blog!'))
             default_blog.save()
-
             login(request, user)
             return render(request, 'P2/login.html') #JsonResponse(data={'status': 0}, safe=False )
         else:
