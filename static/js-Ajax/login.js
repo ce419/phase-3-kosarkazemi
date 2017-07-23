@@ -32,7 +32,7 @@ $(document).ready(function() {
                 // document.location = 'google.com';
 
                 $.get({
-                url: '/blog_id/',
+                url: '/auth/blog_id/',
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader('myToken', Cookies.get('myToken'));
                 },
